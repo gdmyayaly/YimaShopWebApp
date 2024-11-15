@@ -1,0 +1,20 @@
+<div class="media-upload">
+    <h2>Uploader des médias</h2>
+  
+    <input type="file" (change)="onFileSelected($event)" multiple />
+  
+    <div class="media-cards">
+      <div *ngFor="let media of mediaList; let i = index" class="media-card">
+        <div class="media-preview">
+          <img *ngIf="media.type.startsWith('image/')" [src]="media.url" alt="preview" />
+          <span *ngIf="!media.type.startsWith('image/')">{{ media.name }}</span>
+        </div>
+        <progress *ngIf="media.progress !== undefined" [value]="media.progress" max="100"></progress>
+        <span class="status" [class.error]="media.status === 'error'">{{ media.status }}</span>
+        <button (click)="removeMedia(i)">Retirer</button>
+      </div>
+    </div>
+  
+    <button (click)="uploadAll()">Valider</button>
+  </div>
+  

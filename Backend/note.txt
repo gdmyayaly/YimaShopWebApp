@@ -1,0 +1,24 @@
+composer require symfony/orm-pack
+composer require --dev symfony/maker-bundle
+https://symfony.com/doc/current/doctrine.html
+php bin/console doctrine:database:create
+php bin/console make:migration
+php bin/console doctrine:migrations:migrate
+php bin/console make:entity --regenerate
+php bin/console make:controller ProductController
+https://symfony.com/doc/current/security.html
+composer require symfony/security-bundle
+php bin/console make:user
+https://symfony.com/bundles/DoctrineFixturesBundle/current/index.html
+composer require --dev orm-fixtures
+php bin/console doctrine:fixtures:load
+https://symfony.com/bundles/LexikJWTAuthenticationBundle/current/index.html
+composer require lexik/jwt-authentication-bundle
+php bin/console lexik:jwt:generate-keypair
+OU
+mkdir -p config/jwt
+openssl genrsa -out config/jwt/private.pem -aes256 4096
+openssl rsa -pubout -in config/jwt/private.pem -out config/jwt/public.pem
+
+composer require nelmio/cors-bundle
+https://github.com/nelmio/NelmioCorsBundle
